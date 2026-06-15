@@ -59,7 +59,7 @@ export default function ContactPage() {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
+                  className="rounded-none border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
                 >
                   <item.icon className="h-5 w-5 text-accent-light" aria-hidden="true" />
                   <p className="mt-2 text-xs font-medium uppercase tracking-wider text-white/50">

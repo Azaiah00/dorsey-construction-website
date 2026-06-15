@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -33,18 +33,34 @@ export function BeforeAfterSlider({
     setPosition(pct);
   }, []);
 
-  const handlePointerDown = (e: React.PointerEvent) => {
-    setIsDragging(true);
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-    updatePosition(e.clientX);
-  };
-
-  const handlePointerMove = (e: React.PointerEvent) => {
+  // Drag starts only on the handle. We listen on window so the drag keeps
+  // working even if the finger moves off the handle.
+  useEffect(() => {
     if (!isDragging) return;
+
+    const handleMove = (e: PointerEvent) => {
+      updatePosition(e.clientX);
+    };
+    const handleUp = () => setIsDragging(false);
+
+    window.addEventListener("pointermove", handleMove);
+    window.addEventListener("pointerup", handleUp);
+    window.addEventListener("pointercancel", handleUp);
+
+    return () => {
+      window.removeEventListener("pointermove", handleMove);
+      window.removeEventListener("pointerup", handleUp);
+      window.removeEventListener("pointercancel", handleUp);
+    };
+  }, [isDragging, updatePosition]);
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    // Only start dragging from the handle so vertical page scroll is never
+    // blocked when a finger passes over the image area.
+    e.preventDefault();
+    setIsDragging(true);
     updatePosition(e.clientX);
   };
-
-  const handlePointerUp = () => setIsDragging(false);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") setPosition((p) => Math.max(0, p - 5));
@@ -97,7 +113,7 @@ export function BeforeAfterSlider({
         className="absolute inset-y-0 z-10"
         style={{ left: `${position}%`, transform: "translateX(-50%)" }}
       >
-        <div className="h-full w-0.5 bg-white shadow-lg" />
+        <div className="pointer-events-none h-full w-0.5 bg-white shadow-lg" />
         <button
           type="button"
           role="slider"
@@ -107,11 +123,9 @@ export function BeforeAfterSlider({
           aria-valuenow={Math.round(position)}
           tabIndex={0}
           onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
           onKeyDown={handleKeyDown}
           className={cn(
-            "absolute top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-12 w-12 cursor-ew-resize items-center justify-center rounded-full border-2 border-white bg-accent shadow-lg transition-transform focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-light",
+            "absolute top-1/2 left-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize touch-none items-center justify-center rounded-full border-2 border-white bg-accent shadow-lg transition-transform focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-light",
             isDragging && "scale-110"
           )}
         >
