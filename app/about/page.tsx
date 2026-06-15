@@ -37,7 +37,7 @@ export default function AboutPage() {
       <Section ariaLabelledby="story-heading">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <FadeIn direction="left">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card-hover">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-none shadow-card-hover">
               <Image
                 src={whyChooseImage}
                 alt={`${siteConfig.owner}, owner of ${siteConfig.name}`}
@@ -108,7 +108,7 @@ export default function AboutPage() {
             },
           ].map((item, i) => (
             <FadeIn key={item.title} delay={i * 0.08}>
-              <div className="rounded-2xl bg-white p-6 shadow-card text-center">
+              <div className="rounded-none bg-white p-6 shadow-card text-center">
                 <item.icon className="mx-auto h-8 w-8 text-accent" aria-hidden="true" />
                 <h3 className="mt-4 font-display font-bold text-primary">
                   {item.title}
@@ -117,6 +117,17 @@ export default function AboutPage() {
               </div>
             </FadeIn>
           ))}
+        </div>
+      </Section>
+
+      <Section ariaLabelledby="commitment-heading" variant="dark">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 id="commitment-heading" className="font-display text-3xl font-bold text-white">
+            A Legacy of Excellence
+          </h2>
+          <p className="mt-4 text-lg text-white/70 leading-relaxed">
+            For nearly two decades, Dorsey Construction has set the standard for high-end remodeling in Richmond. Our award-winning approach combines innovative design with timeless building techniques, ensuring every space we touch is both beautiful and enduring.
+          </p>
         </div>
       </Section>
 

@@ -68,10 +68,10 @@ export default function ServicesPage() {
               <FadeIn key={service.id} delay={i * 0.05}>
                 <article
                   id={service.id}
-                  className="scroll-mt-28 grid gap-8 rounded-3xl bg-white p-8 shadow-card md:grid-cols-2 md:p-10"
+                  className="scroll-mt-28 grid gap-8 rounded-none bg-white p-8 shadow-card md:grid-cols-2 md:p-10"
                 >
                   <div>
-                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-none bg-accent/10 text-accent">
                       <Icon className="h-7 w-7" aria-hidden="true" />
                     </div>
                     <h3 className="font-display text-2xl font-bold text-primary">
@@ -110,6 +110,17 @@ export default function ServicesPage() {
               </FadeIn>
             );
           })}
+        </div>
+      </Section>
+
+      <Section variant="muted" ariaLabelledby="guarantee-heading">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 id="guarantee-heading" className="font-display text-3xl font-bold text-primary">
+            The Dorsey Guarantee
+          </h2>
+          <p className="mt-4 text-lg text-slate-body leading-relaxed">
+            Every service we provide is backed by our unwavering commitment to craftsmanship. We use premium materials, employ expert tradespeople, and maintain a pristine job site. Your project isn&apos;t finished until you are 100% satisfied.
+          </p>
         </div>
       </Section>
 
