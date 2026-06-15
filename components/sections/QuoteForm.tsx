@@ -281,7 +281,7 @@ export function QuoteForm() {
             </div>
 
             {/* Honeypot — hidden from users, bots fill it in */}
-            <div className="absolute -left-[9999px]" aria-hidden="true">
+            <div className="honeypot" aria-hidden="true">
               <label htmlFor="website">Website</label>
               <input
                 id="website"

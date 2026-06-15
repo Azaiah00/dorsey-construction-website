@@ -14,6 +14,21 @@
 /* ─── Base Styles ─── */
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  max-width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) #212a32;
+}
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  color: var(--color-body);
+  background-color: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  max-width: 100%;
+  overscroll-behavior-x: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -30,12 +45,17 @@ html {
   }
 }
 
-body {
-  font-family: var(--font-body), system-ui, sans-serif;
-  color: var(--color-body);
-  background-color: var(--color-surface);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Prevent layout shift from off-screen honeypot fields */
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ─── Focus Styles (WCAG 2.1 AA) ─── */
@@ -46,7 +66,7 @@ body {
 
 /* ─── Selection ─── */
 ::selection {
-  background-color: rgba(201, 162, 39, 0.25);
+  background-color: rgba(196, 169, 119, 0.35);
   color: var(--color-primary);
 }
 
@@ -104,20 +124,33 @@ body {
   z-index: 1;
 }
 
-/* ─── Scrollbar (subtle) ─── */
+/* ─── Scrollbar — Dorsey brand aesthetic ─── */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-surface);
+  background: #212a32;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e0;
-  border-radius: 4px;
+  background: linear-gradient(
+    180deg,
+    var(--color-accent-light) 0%,
+    var(--color-accent) 100%
+  );
+  border: 2px solid #212a32;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a0aec0;
+  background: linear-gradient(
+    180deg,
+    var(--color-accent) 0%,
+    #a68d5d 100%
+  );
+}
+
+::-webkit-scrollbar-corner {
+  background: #212a32;
 }

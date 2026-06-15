@@ -40,7 +40,7 @@ export function FadeIn({
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] as const }}
-      className={className}
+      className={cn("overflow-x-clip", className)}
     >
       {children}
     </motion.div>

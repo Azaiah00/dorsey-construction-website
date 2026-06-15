@@ -28,7 +28,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={ariaLabelledby}
-      className={cn("py-24 md:py-32", variantStyles[variant], className)}
+      className={cn("overflow-x-clip py-24 md:py-32", variantStyles[variant], className)}
     >
       <Container>{children}</Container>
     </section>

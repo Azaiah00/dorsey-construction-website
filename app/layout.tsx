@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${displayFont.variable} ${bodyFont.variable} h-full scroll-smooth`}
+      className={`${displayFont.variable} ${bodyFont.variable} h-full scroll-smooth overflow-x-clip`}
     >
       <head>
         <script
@@ -39,12 +39,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-body antialiased">
+      <body className="min-h-full flex flex-col font-body antialiased overflow-x-clip">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
         <Header />
-        <main id="main-content" className="flex-1 pb-20 lg:pb-0">
+        <main id="main-content" className="flex-1 overflow-x-clip pb-20 lg:pb-0">
           {children}
         </main>
         <Footer />

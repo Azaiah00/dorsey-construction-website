@@ -13,14 +13,14 @@ export function Process() {
         dark
       />
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-8 overflow-x-clip md:grid-cols-2 lg:grid-cols-4">
         {processSteps.map((step, i) => (
           <FadeIn key={step.step} delay={i * 0.12}>
             <div className="relative">
               {/* Connector line (desktop) */}
               {i < processSteps.length - 1 && (
                 <div
-                  className="absolute left-1/2 top-8 hidden h-0.5 w-full bg-accent/30 lg:block"
+                  className="absolute left-1/2 top-8 hidden h-0.5 w-1/2 bg-accent/30 lg:block"
                   aria-hidden="true"
                 />
               )}

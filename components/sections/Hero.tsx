@@ -13,7 +13,7 @@ import { siteConfig, heroImage } from "@/lib/site";
 export function Hero() {
   return (
     <section
-      className="relative flex min-h-[100svh] items-center"
+      className="relative flex min-h-[100svh] items-center overflow-hidden"
       aria-labelledby="hero-heading"
     >
       {/* Full-bleed background image */}
@@ -42,7 +42,7 @@ export function Hero() {
         <FadeIn delay={0.1}>
           <h1
             id="hero-heading"
-            className="max-w-4xl font-display text-display-xl font-bold text-white"
+            className="max-w-4xl break-words font-display text-display-xl font-bold text-white"
           >
             Remodels Richmond Homeowners{" "}
             <span className="text-accent-light">Brag About</span>
