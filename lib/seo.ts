@@ -27,6 +27,14 @@ export function createMetadata({
     description: pageDescription,
     metadataBase: new URL(siteConfig.url),
     alternates: { canonical: url },
+    icons: {
+      icon: [
+        { url: "/images/logo-icon.png", type: "image/png" },
+      ],
+      apple: [
+        { url: "/images/logo-icon.png", type: "image/png" },
+      ],
+    },
     openGraph: {
       title: pageTitle,
       description: pageDescription,
@@ -36,10 +44,11 @@ export function createMetadata({
       type: "website",
       images: [
         {
-          url: "/og-image.jpg",
+          url: "/images/og-share.png",
           width: 1200,
           height: 630,
           alt: `${siteConfig.name} — Premium Remodeling in Richmond, VA`,
+          type: "image/png",
         },
       ],
     },
@@ -47,6 +56,7 @@ export function createMetadata({
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
+      images: ["/images/og-share.png"],
     },
     robots: noIndex
       ? { index: false, follow: false }

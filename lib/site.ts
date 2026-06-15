@@ -10,7 +10,7 @@ export const siteConfig = {
   tagline: "Richmond's Trusted Remodeling Experts",
   description:
     "Premium kitchen, bathroom, and whole-home remodeling in Richmond, VA and Central Virginia. Owner-operated by Randy L. Dorsey Jr. with 17 years of craftsmanship. BBB A+ Accredited.",
-  url: "https://dorseyconstructionllc.biz", // TODO: Update to production domain after Vercel deploy
+  url: "https://dorseyconstruction-mocksite.netlify.app",
   locale: "en_US",
   foundedYear: 2009,
   foundedMonth: "March",
